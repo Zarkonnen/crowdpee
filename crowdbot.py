@@ -113,7 +113,7 @@ class LessListener(StreamListener):
                             print "Skipped following " + status.author.screen_name.encode('utf-8')
                     response = "@" + status.author.screen_name + " " + tweet.replace("{{url}}", "http://nearbysources.com/q/" + str(questionnaire.id) + "/" + str(b["id"]) + "/en").replace("{{location}}", b["name"])
                     if len(response) > 140:
-                        print "Skipped response that would have been too long (" + len(response) + ")"
+                        print "Skipped response that would have been too long (" + str(len(response)) + ")"
                         print response
                         return
                     # if following user, send response
