@@ -127,10 +127,10 @@ class LessListener(StreamListener):
                                 self.cb_tweet_made()
                         else:
                             print "Skipped tweeting: " + response.encode('utf-8') 
-                print status.text.encode('utf-8')
-                print status.coordinates['coordinates']
-                print b['name'].encode('utf-8')
-                print dist
+                #print status.text.encode('utf-8')
+                #print status.coordinates['coordinates']
+                #print b['name'].encode('utf-8')
+                #print dist
         except Exception as exc:
             print "Exception: ", str(exc)
         print
