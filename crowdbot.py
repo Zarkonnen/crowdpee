@@ -113,7 +113,8 @@ class LessListener(StreamListener):
                             print "Skipped following " + status.author.screen_name.encode('utf-8')
                     response = "@" + status.author.screen_name + " " + tweet.replace("{{url}}", "http://nearbysources.com/q/" + str(questionnaire.id) + "/" + str(b["id"]) + "/en").replace("{{location}}", b["name"])
                     if len(response) > 140:
-                        print "Skipped response that would have been too long"
+                        print "Skipped response that would have been too long (" + len(response) + ")"
+                        print response
                         return
                     # if following user, send response
                     can_tweet_once = not twitter_request_already_exists(handle=status.author.screen_name, questionnaire=questionnaire) and friendships[0].following
@@ -134,7 +135,7 @@ class LessListener(StreamListener):
         except Exception as exc:
             print "Exception: ", str(exc)
         print
-        print
+        #print
 
 if __name__ == '__main__':
     while True:
