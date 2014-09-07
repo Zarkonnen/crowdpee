@@ -56,14 +56,10 @@ class Event(Model):
         return event
 
 def twitter_request_already_exists(handle, questionnaire, location=None):
-    try:
-        if location:
-            TwitterRequest.objects.get(handle=handle, questionnaire=questionnaire, location=location)
-        else:
-            TwitterRequest.objects.get(handle=handle, questionnaire=questionnaire)
-        return True
-    except:
-        return False
+    if location:
+        return len(TwitterRequest.objects.filter(handle=handle, questionnaire=questionnaire, location=location)) > 0
+    else:
+        return len(TwitterRequest.objects.filter(handle=handle, questionnaire=questionnaire)) > 0
 
 class LessListener(StreamListener):
     TIMEOUT = datetime.timedelta(seconds=300)
